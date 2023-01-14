@@ -240,7 +240,7 @@ namespace ContactManagementSystem
             string SearchValue = TextBoxSearchCategory.Text.Trim().ToLower();
             foreach (DataGridViewRow row in DatagridviewCategory.Rows)
             {
-                var SearchName = row.Cells[0].Value.ToString();
+                var SearchName = row.Cells[1].Value.ToString();
                 var SearchNameLower = SearchName.ToLower();
                 if (!SearchNameLower.Contains(SearchValue))
                 {

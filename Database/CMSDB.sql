@@ -2,9 +2,9 @@ CREATE DATABASE CMSDB
 GO
 USE CMSDB;
 GO
-CREATE TABLE Catagorys (
-	CatagoryID INT IDENTITY(1,1) PRIMARY KEY,
-	CatagoryName VARCHAR(20) NOT NULL
+CREATE TABLE Categories (
+	CategoryID INT IDENTITY(1,1) PRIMARY KEY,
+	CategoryName VARCHAR(20) NOT NULL
 )
 GO
 CREATE TABLE Contacts (
@@ -12,8 +12,8 @@ CREATE TABLE Contacts (
 	Name VARCHAR(20) NOT NULL,
 	MobileNumber VARCHAR(20) UNIQUE NOT NULL,
 	Email VARCHAR(50),
-	CatagoryID INT NOT NULL,
+	CategoryID INT NOT NULL,
 	Address VARCHAR(40),
-	FOREIGN KEY (CatagoryID) REFERENCES Catagorys(CatagoryID)
+	FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 )
 GO

@@ -262,6 +262,7 @@
             this.Name = "Contacts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts";
+            this.Activated += new System.EventHandler(this.Contacts_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridviewContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

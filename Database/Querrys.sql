@@ -1,8 +1,8 @@
 USE CMSDB
 GO
-UPDATE Catagorys
-SET CatagoryName = 'Colleagues'
-WHERE CatagoryID = 4
+UPDATE Categories
+SET CategoryName = 'Colleagues'
+WHERE CategoryID = 4
 GO
 
 UPDATE Contacts
@@ -10,15 +10,15 @@ SET CatagoryID = 3
 WHERE ContactID = 3
 GO
 
-DELETE FROM Catagorys
-WHERE CatagoryID = 4
+DELETE FROM Catagories
+WHERE CategoryID = 4
 GO
 
 DELETE FROM Contacts
 WHERE ContactID = 3
 GO
 
-SELECT * FROM Catagorys
+SELECT * FROM Categories
 GO
 
 SELECT * FROM Contacts
@@ -26,18 +26,18 @@ GO
 
 SELECT Name, MobileNumber AS 'Mobile Number', Email, Address, CatagoryName AS 'Catagory' 
 FROM Contacts
-LEFT JOIN Catagorys ON Contacts.CatagoryID = Catagorys.CatagoryID
+LEFT JOIN Catagories ON Contacts.CategoryID = Categories.CategoryID
 GO
 
-SELECT  ct.CatagoryID AS ID, ct.CatagoryName AS Catagory, COUNT(c.Catagoryid) AS 'Total Number' 
-FROM Catagorys ct
+SELECT  ct.CategoryID AS ID, ct.CategoryName AS Catagory, COUNT(c.Categoryid) AS 'Total Number' 
+FROM Catagories ct
 LEFT JOIN 
 Contacts c 
 ON 
-c.CatagoryID = ct.CatagoryID 
+c.CategoryID = ct.CategoryID 
 
-GROUP BY ct.CatagoryID
-, CatagoryName
+GROUP BY ct.CategoryID
+, ct.CategoryName
 GO
 
-UPDATE Contacts SET CatagoryID = 1 WHERE CatagoryID = 3
+UPDATE Contacts SET CategoryID = 1 WHERE  CategoryID in ()

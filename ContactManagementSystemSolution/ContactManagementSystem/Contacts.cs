@@ -1,7 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-
 namespace ContactManagementSystem
 {
     public partial class Contacts : Form
@@ -11,32 +10,35 @@ namespace ContactManagementSystem
         {
             InitializeComponent();
             DisplayContacts();
-            CatagoryComboBoxLoad();
+            CategoryComboBoxLoad();
         }
-        public void CatagoryComboBoxLoad()
+        public void CategoryComboBoxLoad()
         {
             DBconnection.Open();
-            SqlDataAdapter SQLselectQuery = new SqlDataAdapter("SELECT * FROM Catagorys", DBconnection);
-            DataTable CatagoryDataTable = new DataTable();
-            SQLselectQuery.Fill(CatagoryDataTable);
+            SqlDataAdapter SQLselectQuery = new SqlDataAdapter("SELECT * FROM Categories", DBconnection);
+            DataTable CategoryDataTable = new DataTable();
+            SQLselectQuery.Fill(CategoryDataTable);
             DBconnection.Close();
-            ComboBoxCatagory.DataSource = CatagoryDataTable;
-            ComboBoxCatagory.ValueMember = "CatagoryID";
-            ComboBoxCatagory.DisplayMember = "CatagoryName";
+            ComboBoxCatagory.DataSource = CategoryDataTable;
+            ComboBoxCatagory.ValueMember = "CategoryID";
+            ComboBoxCatagory.DisplayMember = "CategoryName";
         }
 
         public void DisplayContacts() 
         {
-            SqlDataAdapter SQLselectQuery = new SqlDataAdapter("SELECT Name, MobileNumber AS 'Mobile Number', Email, Address, CatagoryName AS 'Catagory' FROM Contacts LEFT JOIN Catagorys ON Contacts.CatagoryID = Catagorys.CatagoryID", DBconnection);
+            DBconnection.Open();
+            SqlDataAdapter SQLselectQuery = new SqlDataAdapter("SELECT Name, MobileNumber AS 'Mobile Number', Email, Address, CategoryName AS 'Category' FROM Contacts LEFT JOIN Categories ON Contacts.CategoryID = Categories.CategoryID", DBconnection);
             DataTable ContactsDataTable = new DataTable();
             SQLselectQuery.Fill(ContactsDataTable);
             DatagridviewContacts.DataSource = ContactsDataTable;
+            DBconnection.Close();
+            DatagridviewContacts.ClearSelection();
         }     
 
         private void btnCatagory_Click(object sender, EventArgs e)
         {
-            Catagorys catagorys = new Catagorys();
-            catagorys.ShowDialog();
+            Categories categorys = new Categories();
+            categorys.ShowDialog();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -79,6 +81,12 @@ namespace ContactManagementSystem
                 ErrorMessage = string.Empty;
             }
             return ErrorMessage;
+        }
+
+        private void Contacts_Activated(object sender, EventArgs e)
+        {
+            DisplayContacts();
+            CategoryComboBoxLoad();
         }
     }
 }

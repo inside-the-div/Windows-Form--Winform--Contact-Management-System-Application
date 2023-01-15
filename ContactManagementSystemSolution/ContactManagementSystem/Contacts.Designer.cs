@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.DatagridviewContacts = new System.Windows.Forms.DataGridView();
-            this.TxtName = new System.Windows.Forms.TextBox();
+            this.TextBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TextBoxMobile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,13 +75,14 @@
             this.DatagridviewContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatagridviewContacts.Size = new System.Drawing.Size(697, 181);
             this.DatagridviewContacts.TabIndex = 1;
+            this.DatagridviewContacts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DatagridviewContacts_MouseDoubleClick);
             // 
-            // TxtName
+            // TextBoxName
             // 
-            this.TxtName.Location = new System.Drawing.Point(13, 69);
-            this.TxtName.Name = "TxtName";
-            this.TxtName.Size = new System.Drawing.Size(202, 23);
-            this.TxtName.TabIndex = 0;
+            this.TextBoxName.Location = new System.Drawing.Point(13, 69);
+            this.TextBoxName.Name = "TextBoxName";
+            this.TextBoxName.Size = new System.Drawing.Size(202, 23);
+            this.TextBoxName.TabIndex = 0;
             // 
             // label2
             // 
@@ -175,8 +176,9 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(100, 23);
             this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Clear";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // TextBoxSearchContacts
             // 
@@ -185,6 +187,7 @@
             this.TextBoxSearchContacts.PlaceholderText = "Search by Name";
             this.TextBoxSearchContacts.Size = new System.Drawing.Size(202, 23);
             this.TextBoxSearchContacts.TabIndex = 7;
+            this.TextBoxSearchContacts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSearchContacts_KeyUp);
             // 
             // label8
             // 
@@ -204,6 +207,7 @@
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete Contact";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -213,6 +217,7 @@
             this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Update Contact";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnExit
             // 
@@ -232,7 +237,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnCatagory_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Contacts
             // 
@@ -250,7 +255,7 @@
             this.Controls.Add(this.TextBoxAddress);
             this.Controls.Add(this.TextBoxEmail);
             this.Controls.Add(this.TextBoxMobile);
-            this.Controls.Add(this.TxtName);
+            this.Controls.Add(this.TextBoxName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
@@ -259,10 +264,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(739, 476);
+            this.MinimumSize = new System.Drawing.Size(739, 476);
             this.Name = "Contacts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts";
-            this.Activated += new System.EventHandler(this.Contacts_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridviewContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,7 +279,7 @@
 
         private Label label1;
         private DataGridView DatagridviewContacts;
-        private TextBox TxtName;
+        private TextBox TextBoxName;
         private Label label2;
         private TextBox TextBoxMobile;
         private Label label3;

@@ -40,4 +40,11 @@ GROUP BY ct.CategoryID
 , ct.CategoryName
 GO
 
-UPDATE Contacts SET CategoryID = 1 WHERE  CategoryID in ()
+UPDATE Contacts SET CategoryID = 1 WHERE  CategoryID IN (2)
+DELETE FROM Categories  WHERE  CategoryID IN (2, 3)
+
+
+UPDATE Contacts
+SET  Name = [new_Name], MobileNumber = [new_MobileNumber], 
+Email = [new_Email], CategoryID = [new_CategoryID], Address = [new_Address]
+WHERE ContactID = [existing_ContactID];

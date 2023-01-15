@@ -39,6 +39,7 @@ namespace ContactManagementSystem
             SQLselectQuery.Fill(CategoryDataTable);
             DatagridviewCategory.DataSource = CategoryDataTable;
             DatagridviewCategory.ClearSelection();
+            this.DatagridviewCategory.Columns["ID"].Visible = false;
         }
         private void btnBack_Click(object sender, EventArgs e)
         {            
@@ -55,7 +56,7 @@ namespace ContactManagementSystem
 
             else if (DuplicateCount(NewCategoryName) > 0)
             {
-                ErrorMessage = NewCategoryName + " is already exist.\nAdd a new Category";
+                ErrorMessage = NewCategoryName + " is already exist.\nAdd a new Category.";
                 MessageBox.Show(ErrorMessage);
             }
             else
@@ -70,7 +71,7 @@ namespace ContactManagementSystem
                 }
                 else
                 {
-                    MessageBox.Show("Something Error, Try Again");
+                    MessageBox.Show("Something Wrong!, Try Again");
                 }
                 CategorysDisplay();
                 ClearCategoryTextFeild();
@@ -86,7 +87,7 @@ namespace ContactManagementSystem
             int count = 0;
             foreach (DataGridViewRow row in DatagridviewCategory.Rows)
             {
-                string RowString = row.Cells[0].Value.ToString();
+                string RowString = row.Cells[1].Value.ToString();
                 RowString = RowString.ToLower();
                 if (CategoryName == RowString)
                 {
@@ -172,13 +173,13 @@ namespace ContactManagementSystem
                 {
                     MessageBox.Show("Category Updated successfully.");
                     btnCategoryUpdate.Enabled = false;
+                    ClearCategoryTextFeild();
                 }
                 else
                 {
                     MessageBox.Show("Something Error, Try Again");
                 }
                 CategorysDisplay();
-                ClearCategoryTextFeild();
                 DBconnection.Close();
             }
             else

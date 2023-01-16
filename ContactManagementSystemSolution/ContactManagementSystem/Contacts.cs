@@ -323,6 +323,7 @@ namespace ContactManagementSystem
             int CategoryID = int.Parse(DatagridviewContacts.SelectedRows[0].Cells[0].Value.ToString());
             ComboBoxCatagory.SelectedValue = CategoryID;
             btnUpdate.Enabled = true;
+            btnDelete.Enabled = false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -435,6 +436,7 @@ namespace ContactManagementSystem
                 MessageBox.Show(ErrorMessage);
             }
             btnUpdate.Enabled = false;
+            btnDelete.Enabled = true;
         }
 
         private void TextBoxSearchContacts_KeyUp(object sender, KeyEventArgs e)
@@ -471,6 +473,5 @@ namespace ContactManagementSystem
                 Properties.Settings.Default.Save();
             }
         }
-        
     }
 }

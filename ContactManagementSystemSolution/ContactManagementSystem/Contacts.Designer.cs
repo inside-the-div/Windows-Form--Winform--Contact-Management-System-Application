@@ -74,7 +74,7 @@
             this.DatagridviewContacts.RowTemplate.Height = 25;
             this.DatagridviewContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatagridviewContacts.Size = new System.Drawing.Size(697, 181);
-            this.DatagridviewContacts.TabIndex = 1;
+            this.DatagridviewContacts.TabIndex = 8;
             this.DatagridviewContacts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DatagridviewContacts_MouseDoubleClick);
             // 
             // TextBoxName
@@ -98,7 +98,7 @@
             this.TextBoxMobile.Location = new System.Drawing.Point(498, 69);
             this.TextBoxMobile.Name = "TextBoxMobile";
             this.TextBoxMobile.Size = new System.Drawing.Size(212, 23);
-            this.TextBoxMobile.TabIndex = 4;
+            this.TextBoxMobile.TabIndex = 3;
             // 
             // label3
             // 
@@ -149,7 +149,7 @@
             this.ComboBoxCatagory.Location = new System.Drawing.Point(254, 113);
             this.ComboBoxCatagory.Name = "ComboBoxCatagory";
             this.ComboBoxCatagory.Size = new System.Drawing.Size(217, 23);
-            this.ComboBoxCatagory.TabIndex = 3;
+            this.ComboBoxCatagory.TabIndex = 4;
             // 
             // label6
             // 
@@ -165,7 +165,7 @@
             this.btnCatagory.Location = new System.Drawing.Point(13, 402);
             this.btnCatagory.Name = "btnCatagory";
             this.btnCatagory.Size = new System.Drawing.Size(100, 23);
-            this.btnCatagory.TabIndex = 10;
+            this.btnCatagory.TabIndex = 11;
             this.btnCatagory.Text = "Catagory";
             this.btnCatagory.UseVisualStyleBackColor = true;
             this.btnCatagory.Click += new System.EventHandler(this.btnCatagory_Click);
@@ -204,7 +204,7 @@
             this.btnDelete.Location = new System.Drawing.Point(244, 402);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 23);
-            this.btnDelete.TabIndex = 9;
+            this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete Contact";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -214,7 +214,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(128, 402);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 23);
-            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update Contact";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -224,7 +224,7 @@
             this.btnExit.Location = new System.Drawing.Point(643, 402);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(68, 23);
-            this.btnExit.TabIndex = 11;
+            this.btnExit.TabIndex = 12;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -269,6 +269,8 @@
             this.Name = "Contacts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts";
+            this.Activated += new System.EventHandler(this.Contacts_Activated);
+            this.Load += new System.EventHandler(this.Contacts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridviewContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

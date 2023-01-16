@@ -11,7 +11,10 @@ namespace ContactManagementSystem
         SqlConnection DBconnection = new SqlConnection("Data Source=.; Initial Catalog=CMSDB; TrustServerCertificate=True; Integrated Security=True ");
         public Contacts()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+        private void Contacts_Load(object sender, EventArgs e)
+        {
             DisplayContacts();
             CategoryLoad();
             btnUpdate.Enabled = false;
@@ -167,16 +170,8 @@ namespace ContactManagementSystem
             }
             return ErrorMessage;
         }
-        
-       /* private void Contacts_Activated(object sender, EventArgs e)
-        {
-            if(Activecount == 0)
-            {
-                DisplayContacts();
-                CategoryLoad();
-                Activecount = 1;
-            }           
-        }*/
+
+
         public void ClearFeilds()
         {
             TextBoxAddress.Clear();
@@ -291,11 +286,10 @@ namespace ContactManagementSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string Error = string.Empty;
             string Ids = string.Empty;
             foreach (DataGridViewRow row in DatagridviewContacts.SelectedRows)
             {
-                int id = (int)row.Cells[0].Value;
+                int id = (int)row.Cells[1].Value;
                 Ids += id.ToString() + ",";   
             }
             Ids = Ids.TrimEnd(',');
@@ -305,23 +299,15 @@ namespace ContactManagementSystem
             }
             else
             {
-                string DeleteQuerry = "DELETE FROM Contacts  WHERE  ContactID IN (" + Ids + ")";
-                if (Error != "")
+                string DeleteQuerry = "DELETE FROM Contacts  WHERE  ContactID IN (" + Ids + ")";           
+                DBconnection.Open();
+                SqlCommand deleteCommand = new SqlCommand(DeleteQuerry, DBconnection);
+                if (deleteCommand.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show(Error);
-                    DatagridviewContacts.ClearSelection();
+                    MessageBox.Show("Contact deleted successfully.");
                 }
-                else
-                {
-                    DBconnection.Open();
-                    SqlCommand deleteCommand = new SqlCommand(DeleteQuerry, DBconnection);
-                    if (deleteCommand.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("Contact deleted successfully.");
-                    }
-                    DBconnection.Close();
-                    DisplayContacts();
-                }
+                DBconnection.Close();
+                DisplayContacts();                
             }
             
         }
@@ -474,5 +460,17 @@ namespace ContactManagementSystem
                 }
             }
         }
+
+        private void Contacts_Activated(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.PageReload == true)
+            {
+                DisplayContacts();
+                CategoryLoad();
+                Properties.Settings.Default.PageReload = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+        
     }
 }

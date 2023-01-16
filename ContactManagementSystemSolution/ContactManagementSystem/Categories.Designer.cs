@@ -88,7 +88,7 @@
             this.btnCategoryUpdate.Location = new System.Drawing.Point(12, 278);
             this.btnCategoryUpdate.Name = "btnCategoryUpdate";
             this.btnCategoryUpdate.Size = new System.Drawing.Size(112, 23);
-            this.btnCategoryUpdate.TabIndex = 3;
+            this.btnCategoryUpdate.TabIndex = 4;
             this.btnCategoryUpdate.Text = "Update";
             this.btnCategoryUpdate.UseVisualStyleBackColor = true;
             this.btnCategoryUpdate.Click += new System.EventHandler(this.btnCategoryUpdate_Click);
@@ -98,7 +98,7 @@
             this.btnCategoryDelete.Location = new System.Drawing.Point(130, 278);
             this.btnCategoryDelete.Name = "btnCategoryDelete";
             this.btnCategoryDelete.Size = new System.Drawing.Size(116, 23);
-            this.btnCategoryDelete.TabIndex = 4;
+            this.btnCategoryDelete.TabIndex = 5;
             this.btnCategoryDelete.Text = "Delete";
             this.btnCategoryDelete.UseVisualStyleBackColor = true;
             this.btnCategoryDelete.Click += new System.EventHandler(this.btnCatagoryDelete_Click);
@@ -108,7 +108,7 @@
             this.btnBack.Location = new System.Drawing.Point(12, 312);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(234, 23);
-            this.btnBack.TabIndex = 5;
+            this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -150,6 +150,7 @@
             this.Name = "Categories";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catagorys";
+            this.Load += new System.EventHandler(this.Categories_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridviewCategory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

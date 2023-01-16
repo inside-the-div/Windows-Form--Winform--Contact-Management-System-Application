@@ -22,6 +22,10 @@ namespace ContactManagementSystem
         public Categories()
         {
             InitializeComponent();
+            
+        }
+        private void Categories_Load(object sender, EventArgs e)
+        {
             CategorysDisplay();
             btnCategoryUpdate.Enabled = false;
         }
@@ -42,7 +46,7 @@ namespace ContactManagementSystem
             this.DatagridviewCategory.Columns["ID"].Visible = false;
         }
         private void btnBack_Click(object sender, EventArgs e)
-        {            
+        {
             this.Close();
         }
         private void btnCatagoryAdd_Click(object sender, EventArgs e)
@@ -68,6 +72,8 @@ namespace ContactManagementSystem
                 {
                     MessageBox.Show("Category Added successfully.");
                     btnCategoryUpdate.Enabled = false;
+                    Properties.Settings.Default.PageReload = true;
+                    Properties.Settings.Default.Save();
                 }
                 else
                 {
@@ -173,6 +179,8 @@ namespace ContactManagementSystem
                 {
                     MessageBox.Show("Category Updated successfully.");
                     btnCategoryUpdate.Enabled = false;
+                    Properties.Settings.Default.PageReload = true;
+                    Properties.Settings.Default.Save();
                     ClearCategoryTextFeild();
                 }
                 else
@@ -230,6 +238,8 @@ namespace ContactManagementSystem
                         transaction.Rollback();
                     }
                     MessageBox.Show("Category deleted successfully.");
+                    Properties.Settings.Default.PageReload = true;
+                    Properties.Settings.Default.Save();
                     CategorysDisplay();
                 }
                 DBconnection.Close();
@@ -258,6 +268,6 @@ namespace ContactManagementSystem
                     currencyManager1.ResumeBinding();
                 }
             }
-        }
+        }        
     }
 }

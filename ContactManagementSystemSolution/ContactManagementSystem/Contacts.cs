@@ -180,6 +180,9 @@ namespace ContactManagementSystem
             TextBoxSearchContacts.Clear();
             TextBoxName.Clear();
             ComboBoxCatagory.SelectedIndex = 0;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = true;
+            DatagridviewContacts.ClearSelection();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -267,8 +270,7 @@ namespace ContactManagementSystem
                 SqlCommand ContactAdd = new SqlCommand(SaveQuery, DBconnection);
                 if (ContactAdd.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Saved successfully. " + ErrorMessage);
-                    btnUpdate.Enabled = false;
+                    MessageBox.Show("Saved successfully. " + ErrorMessage);                    
                     ClearFeilds();
                 }
                 else
@@ -282,6 +284,8 @@ namespace ContactManagementSystem
             {
                 MessageBox.Show(ErrorMessage);
             }
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -365,7 +369,7 @@ namespace ContactManagementSystem
                         {
                             if (PreviousMobileNumber.Trim() != TextBoxMobile.Text.Trim())
                             {
-                                ErrorMessage += "Mobile Number Already Exist, Enter a New Mobile Number.";
+                                ErrorMessage += "Mobile Number Already Exist, Enter a New Mobile Number or Old one.";
                                 IsValid = false;
                             }
                         }
@@ -423,10 +427,13 @@ namespace ContactManagementSystem
                     MessageBox.Show("Updated successfully. " + ErrorMessage);
                     btnUpdate.Enabled = false;
                     ClearFeilds();
+                    btnUpdate.Enabled = false;
+                    btnDelete.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Something Error, Try Again");
+                    ClearFeilds();
                 }
                 DBconnection.Close();
                 DisplayContacts();
@@ -434,9 +441,9 @@ namespace ContactManagementSystem
             else
             {
                 MessageBox.Show(ErrorMessage);
-            }
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = false;
+            }            
         }
 
         private void TextBoxSearchContacts_KeyUp(object sender, KeyEventArgs e)

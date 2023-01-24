@@ -45,6 +45,7 @@ namespace ContactManagementSystem
             this.DatagridviewContacts.Columns["ID"].Visible = false;
             this.DatagridviewContacts.Columns["CategoryID"].Visible = false;
             DatagridviewContacts.ClearSelection();
+            DatagridviewContacts.AutoResizeColumns();
         }     
 
         private void btnCatagory_Click(object sender, EventArgs e)

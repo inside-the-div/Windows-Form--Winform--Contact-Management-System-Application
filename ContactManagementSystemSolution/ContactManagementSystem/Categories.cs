@@ -44,6 +44,7 @@ namespace ContactManagementSystem
             DatagridviewCategory.DataSource = CategoryDataTable;
             DatagridviewCategory.ClearSelection();
             this.DatagridviewCategory.Columns["ID"].Visible = false;
+            DatagridviewCategory.AutoResizeColumns();
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
